@@ -29,8 +29,7 @@ Framework: Selenium, Allure, Pytest
 
 Design Patterns: Page Object Model
 
-Инструкция по установке и использованию
-
 Установка и использование Allure:
-1) https://docs.qameta.io/allure-report/frameworks/python/pytest#installation
-
+https://docs.qameta.io/allure-report/frameworks/python/pytest#installation
+1) Для запуска всех тестов ввести в терминале: pytest -v --alluredir allure_reports
+2) Для запуска отчёта Allure ввест в терминале: allure serve allure_reports
