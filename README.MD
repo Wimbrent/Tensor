@@ -31,5 +31,5 @@ Design Patterns: Page Object Model
 
 Установка и использование Allure:
 https://docs.qameta.io/allure-report/frameworks/python/pytest#installation
-1) Для запуска всех тестов ввести в терминале: pytest -v --alluredir allure_reports
-2) Для запуска отчёта Allure ввест в терминале: allure serve allure_reports
+1) Запуск всех тестов через терминал: pytest -v --alluredir allure_reports
+2) Запуск отчёта Allure через терминал: allure serve allure_reports
