@@ -15,16 +15,15 @@ class TestSearchField:
 
         driver = self.driver
         yandex_page = Home(driver)
-
-        with allure.step("Checkout search field element and Enter keyword"):
+        with allure.step("Проверить наличие поля поиска"):
+            yandex_page.checkout_search_field()
+        with allure.step("Ввести ключевое слово для поиска"):
             yandex_page.enter_keyword_in_search_field(keyword)
         time.sleep(3)
-        with allure.step("Checkout suggest element"):
+        with allure.step("Проверить наличие поля подсказки"):
             yandex_page.check_suggest()
-        with allure.step("Get a screenshot of the suggest element"):
-            allure.attach(driver.get_screenshot_as_png(), name="Suggest", attachment_type=AttachmentType.PNG)
-        with allure.step("Click button enter"):
+        with allure.step("Нажать кнопку ввода"):
             yandex_page.click_button_enter()
         time.sleep(2)
-        with allure.step("Get a screenshot of the result"):
+        with allure.step("Сделать скриншот с результатом поиска"):
             allure.attach(driver.get_screenshot_as_png(), name="Search_Result", attachment_type=AttachmentType.PNG)

@@ -15,6 +15,9 @@ class Home:
     def checkout_images_button(self):
         self.driver.find_element(By.XPATH, self._button_images).is_displayed()
 
+    def checkout_search_field(self):
+        self.driver.find_element(By.ID, self._search_field).is_displayed()
+
     def enter_keyword_in_search_field(self, keyword):
         self.driver.find_element(By.ID, self._search_field).send_keys(keyword)
 

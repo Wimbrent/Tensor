@@ -24,39 +24,34 @@ class TestImages:
 
         imagespage_url = "https://yandex.ru/images/?utm_source=main_stripe_big"
 
-        with allure.step("Get a screenshot of the link button to the Yandex images page"):
-            allure.attach(driver.get_screenshot_as_png(), name="Images", attachment_type=AttachmentType.PNG)
-        with allure.step("Checkout button link images"):
+        with allure.step("Проверить наличие кнопки Картинки"):
             yandex_page.checkout_images_button()
-        with allure.step("Click button link images page"):
+        with allure.step("Нажать на кнопку Картинки"):
             yandex_page.click_button_link_images()
+        # Переключить драйвер на новую вкладку браузера
         driver.switch_to.window(self.driver.window_handles[1])
         time.sleep(2)
-        with allure.step("Checkout images page url"):
+        with allure.step("Проверить url страницы"):
             locator.assert_elements(driver.current_url, imagespage_url)
         time.sleep(2)
-        with allure.step("Get text from the images category"):
+        with allure.step("Получить название категории"):
             yandex_images.get_text_image(Keyword)
-        with allure.step("Select the first category of images"):
+        with allure.step("Нажать на первую категорию изображения"):
             yandex_images.select_image_category(Keyword)
-        with allure.step("Get text from the search field"):
+        with allure.step("Получить текст из поля поиска"):
             yandex_images.get_text_from_search_field()
-        with allure.step("Compare text from the image category with text from the search field"):
+        with allure.step("Сравнить название категории с текстом из поля поиска"):
             locator.assert_elements(yandex_images.get_text_image(Keyword), yandex_images.get_text_from_search_field())
         time.sleep(3)
-        with allure.step("Get screenshot of Yandex Images Pages"):
-            allure.attach(driver.get_screenshot_as_png(), name="Yandex_Images_Page", attachment_type=AttachmentType.PNG)
-        with allure.step("Click on the selected image"):
-            yandex_images.click_image(0)
-        with allure.step("Get text from image before click button next"):
+        with allure.step("Нажать на картинку"):
+            yandex_images.click_image(Keyword)
+        with allure.step("Получить текст из названия картинки"):
             yandex_images.first_assert_image()
-        with allure.step("Click button next"):
+        with allure.step("Нажать кнопку Следующее"):
             yandex_images.click_button_next()
-        with allure.step("Get screenshot of Yandex Images Pages"):
-            allure.attach(driver.get_screenshot_as_png(), name="NewImage", attachment_type=AttachmentType.PNG)
-        with allure.step("Click button previous"):
+        with allure.step("Нажать кнопку Предыдущее"):
             yandex_images.click_button_previous()
-        with allure.step("Get text from image after click button previous"):
+        with allure.step("Получить текст из названия картинки"):
             yandex_images.second_assert_image()
-        with allure.step("Compare text"):
+        with allure.step("Сравнить текст"):
             locator.assert_elements(yandex_images.first_assert_image(), yandex_images.second_assert_image())
