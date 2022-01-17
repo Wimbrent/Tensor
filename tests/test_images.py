@@ -22,15 +22,18 @@ class TestImages:
         yandex_images = Images(driver)
         locator = Locator
 
-        print(f"Home url is: {driver.current_url}")
+        imagespage_url = "https://yandex.ru/images/?utm_source=main_stripe_big"
 
         with allure.step("Get a screenshot of the link button to the Yandex images page"):
             allure.attach(driver.get_screenshot_as_png(), name="Images", attachment_type=AttachmentType.PNG)
+        with allure.step("Checkout button link images"):
+            yandex_page.checkout_images_button()
         with allure.step("Click button link images page"):
             yandex_page.click_button_link_images()
         driver.switch_to.window(self.driver.window_handles[1])
         time.sleep(2)
-        print(f"Pictures url is: {driver.current_url}")
+        with allure.step("Checkout images page url"):
+            locator.assert_elements(driver.current_url, imagespage_url)
         time.sleep(2)
         with allure.step("Get text from the images category"):
             yandex_images.get_text_image(Keyword)
@@ -49,6 +52,8 @@ class TestImages:
             yandex_images.first_assert_image()
         with allure.step("Click button next"):
             yandex_images.click_button_next()
+        with allure.step("Get screenshot of Yandex Images Pages"):
+            allure.attach(driver.get_screenshot_as_png(), name="NewImage", attachment_type=AttachmentType.PNG)
         with allure.step("Click button previous"):
             yandex_images.click_button_previous()
         with allure.step("Get text from image after click button previous"):

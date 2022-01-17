@@ -12,8 +12,10 @@ class Home:
         self._button_images = "//a[@data-id = 'images']"
         self._suggest = "mini-suggest__popup.mini-suggest__popup_svg_yes.mini-suggest__popup_theme_tile.mini-suggest__popup_visible"
 
+    def checkout_images_button(self):
+        self.driver.find_element(By.XPATH, self._button_images).is_displayed()
+
     def enter_keyword_in_search_field(self, keyword):
-        self.driver.find_element(By.ID, self._search_field).is_displayed()
         self.driver.find_element(By.ID, self._search_field).send_keys(keyword)
 
     def check_suggest(self):
@@ -23,5 +25,4 @@ class Home:
         self.driver.find_element(By.ID, self._search_field).send_keys(Keys.ENTER)
 
     def click_button_link_images(self):
-        self.driver.find_element(By.XPATH, self._button_images).is_displayed()
         self.driver.find_element(By.XPATH, self._button_images).click()
