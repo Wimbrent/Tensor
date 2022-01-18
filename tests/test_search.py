@@ -15,6 +15,7 @@ class TestSearchField:
 
         driver = self.driver
         yandex_page = Home(driver)
+
         with allure.step("Проверить наличие поля поиска"):
             yandex_page.checkout_search_field()
         with allure.step("Ввести ключевое слово для поиска"):
